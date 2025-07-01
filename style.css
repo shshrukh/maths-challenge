@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+}
+h2{
+    font-size: 1.5rem;
+}
+p {
+    display: block;
+}
+
+button {
+    padding: 1rem 2rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, rgb(12, 88, 12), #438011, #60a5fa);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    transition: box-shadow 0.3s ease, background-image 0.3s ease;
+
+}
+
+button:hover {
+    box-shadow: 5px 5px 15px black;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #60a5fa, #438011, rgb(12, 88, 12));
+}
+
+.main-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right, #fcd34d, #f472b6, #60a5fa);
+    padding: 1rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    background-color: white;
+    border-radius: 20px;
+    /* background: rgb(145, 86, 86); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1.6rem;
+    padding: 1.5rem;
+}
+
+.instructions ol {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.instructions ol li {
+    font-size: 1.3rem;
+}
+
+.welcome-heading h1 {
+    font-size: xx-large;
+    font-weight: 800;
+    text-align: center;
+    background-image: linear-gradient(to right, #fcd34d, #f472b6, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+.hidden{
+    display: none;
+}
+.lvl-buttons{
+    display: flex;
+    gap: 1rem;
+}
+
+/* game lvl style */
+
+.lvl-heading{
+    font-weight: 900;
+    
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2{
+        font-size: 1rem;
+    }
+    button {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+        gap: 0.5;
+    }
+
+    .container {
+        max-width: 90%;
+        min-height: auto;
+        padding: 1rem;
+        padding: 1rem 2rem;
+    }
+
+    .instructions ol li {
+        font-size: 1rem;
+    }
+
+    .welcome-heading h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .main-container {
+        background: white; 
+        padding: 0;
+    }
+
+    .container {
+        background-color: white; 
+        border-radius: 10px;     
+        padding: 0rem;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    button {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.5rem;
+        gap: 0.5;
+    }
+
+    .instructions ol li {
+        font-size: 1rem;
+        padding: 0rem ;
+        list-style-type: none;
+    }
+
+    .welcome-heading h1 {
+        word-spacing: -3px;
+        letter-spacing: -1px;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+    
+}
+
