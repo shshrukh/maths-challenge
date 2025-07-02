@@ -1,68 +1,70 @@
 const els = {};
 const state = {
-    gameLvl : 0,
-    operations : ['+','-']
+    questionDigits: 0,
+    operations: ['+', '-'],
+    question: null,
 
 };
 
 
-function init(){
-    cacheDOM(); 
+function init() {
+    cacheDOM();
     bindEvents();
 
 }
 
-function cacheDOM(){
-    Object.assign(els,{
-        gameGuide : document.querySelector('.game-guide'),
-        nextBtn : document.querySelector('.next'),
-        gameLvl :document.querySelector('.choose-game-lvl'),
-        gameLvlBtn : document.querySelectorAll('.gmae-lvl-btn'),
-        displayQuestions : document.querySelector('.display-questions'),
+function cacheDOM() {
+    Object.assign(els, {
+        gameGuide: document.querySelector('.game-guide'),
+        nextBtn: document.querySelector('.next'),
+        gameLvl: document.querySelector('.choose-game-lvl'),
+        gameLvlBtn: document.querySelectorAll('.game-lvl-btn'),
+        displayQuestions: document.querySelector('.display-questions'),
 
     })
 }
 
-function bindEvents(){
+function bindEvents() {
     els.nextBtn.addEventListener('click', handleNext);
     els.gameLvlBtn.forEach(element => element.addEventListener('click', handleSelectGameLvl));
-    
+
 }
 
-function handleNext(){
+function handleNext() {
     els.gameGuide.classList.add('hidden')
     els.gameLvl.classList.remove('hidden')
-    
+
 }
-function handleSelectGameLvl(e){
-    if(e.target.innerText === 'One digit'){
-        state.gameLvl = 1;
-        console.log(state.gameLvl, typeof state.gameLvl);
-        
-    }else if(e.target.innerText === 'Two digit'){
-        state.gameLvl = 2;
-        console.log(state.gameLvl, typeof state.gameLvl);
-    }else{
-        state.gameLvl = 3;
-        console.log(state.gameLvl, typeof state.gameLvl);
+function handleSelectGameLvl(e) {
+    if (e.target.innerText === 'One digit') {
+        state.questionDigits = 1;
+        console.log(state.questionDigits, typeof state.questionDigits);
+
+    } else if (e.target.innerText === 'Two digit') {
+        state.questionDigits = 2;
+        console.log(state.questionDigits, typeof state.questionDigits);
+    } else {
+        state.questionDigits = 3;
+        console.log(state.questionDigits, typeof state.questionDigits);
     }
     els.gameLvl.classList.add('hidden');
     els.displayQuestions.classList.remove('hidden')
-    
+
 }
 
-const randomNum = ()=> Math.floor(Math.random()*9+1);
-
-
-function oneDigitNumber(){
-    const question = `${randomNum()} + ${randomNum()}`;
-    console.log(question);
-    console.log(eval(question));
-    
-
-    
+function randomNum(digit) {
+    if (digit === 1) return Math.floor(Math.random() * 9) + 1;
+    if (digit === 2) return Math.floor(Math.random() * 90) + 10;
+    if (digit === 3) return Math.floor(Math.random() * 900) + 100;
 }
-oneDigitNumber()
+
+function genQuestions(digit) {
+    const numOne = randomNum();
+    const numTwo = randomNum();
+    const operation = state.operations[Math.floor(Math.random() * state.operations.length)];
+    return `${numOne} ${operation} ${numTwo}`;
+
+}
 
 
 
@@ -71,11 +73,4 @@ oneDigitNumber()
 
 
 
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded' , init)
+document.addEventListener('DOMContentLoaded', init)

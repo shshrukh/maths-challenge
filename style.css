@@ -8,9 +8,11 @@
 h1 {
     font-size: 2rem;
 }
-h2{
+
+h2 {
     font-size: 1.5rem;
 }
+
 p {
     display: block;
 }
@@ -78,31 +80,64 @@ button:hover {
     background-clip: text;
     color: transparent;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
-.lvl-buttons{
+
+.lvl-buttons {
     display: flex;
     gap: 1rem;
 }
 
 /* game lvl style */
 
-.lvl-heading{
+.lvl-heading {
     font-weight: 900;
-    
+
 }
+
+
+/* display questions  */
+.timer {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.question-container {
+
+    border: none;
+    background-color: #60a5fa;
+}
+
+.input-same {
+    padding: 0.5rem;
+    outline: none;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 10px;
+
+}
+
+
+
+
 @media (max-width: 768px) {
     h1 {
         font-size: 1.5rem;
     }
-    h2{
+
+    h2 {
         font-size: 1rem;
     }
+
     button {
         padding: 0.6rem 0.8rem;
         font-size: 0.8rem;
-        gap: 0.5;
+        /* gap: 2rem; */
     }
 
     .container {
@@ -119,18 +154,32 @@ button:hover {
     .welcome-heading h1 {
         font-size: 1.5rem;
     }
+
+    .input-same {
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-align: center;
+        border-radius: 10px;
+
+    }
+
+    .timer {
+        justify-content: space-evenly;
+    }
 }
+
+
 
 
 @media (max-width: 425px) {
     .main-container {
-        background: white; 
+        background: white;
         padding: 0;
     }
 
     .container {
-        background-color: white; 
-        border-radius: 10px;     
+        background-color: white;
+        border-radius: 10px;
         padding: 0rem;
         gap: 1rem;
     }
@@ -147,7 +196,7 @@ button:hover {
 
     .instructions ol li {
         font-size: 1rem;
-        padding: 0rem ;
+        padding: 0rem;
         list-style-type: none;
     }
 
@@ -157,6 +206,19 @@ button:hover {
         font-size: 1.8rem;
         font-weight: 600;
     }
-    
-}
 
+    .input-same {
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: center;
+        border-radius: 5px;
+        min-width: none;
+
+    }
+
+    .timer {
+        justify-content: space-between;
+    }
+
+
+}
