@@ -34,7 +34,6 @@ function cacheDOM() {
         restartBtn :document.querySelector('.restart-game'),
         timerDisplay: document.querySelector('.count-timer'),
 
-        
 
     })
 }
@@ -119,7 +118,7 @@ function renderQuestion() {
 
         els.inputValue.focus();
         timer(() => {
-            alert("⏱ Time's up!");
+            alert("Time's up!");
             els.inputValue.value = '';
             renderQuestion();
         });
@@ -129,7 +128,7 @@ function renderQuestion() {
 }
 
 function finalScore() {
-    persentage = state.correctAswer/10 *100
+    const persentage = state.correctAswer/10 *100
     els.result.innerText = `your final score is ${persentage}%`
     els.displayQuestions.classList.add('hidden');
     els.scoreContainer.classList.remove('hidden');
