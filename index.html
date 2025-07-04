@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="logic.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Math Challange</title>
 </head>
 
@@ -22,7 +25,7 @@
                     <li>You have 15 second to solve each questions</li>
                     <li>Answer fast as you can to get a high score</li>
                     <li>See your final score as a persentage at the end</li>
-                    
+
                 </ol>
             </div>
             <div class="start-btn">
@@ -31,7 +34,7 @@
         </div>
     </section>
     <!-- question section  -->
-     <section class="main-container choose-game-lvl hidden">
+    <section class="main-container choose-game-lvl hidden">
         <div class="container">
             <h2 class="lvl-heading">Chose the number of digits</h2>
             <div class="lvl-buttons">
@@ -40,19 +43,32 @@
                 <button id="three-digit" class="game-lvl-btn">Three digit</button>
             </div>
         </div>
-     </section>
-     <!-- display questions -->
-     <section class="main-container display-questions hidden">
+    </section>
+    <!-- display questions -->
+    <section class="main-container display-questions hidden">
         <div class="container">
-            <div class="timer"><h2>timer icon</h2><h2>15</h2></div>
-            <div class="main-question-container input-container">
-                <input type="text" readonly class="question-container input-same" value="14 + 5 = ?" >
+            <div class="timer">
+                <i class="fa-solid fa-clock"></i>
+                <h2 class="count-timer">15</h2>
             </div>
-            <div class="answer-contianer input-container">
-                <input type="number" class="input-same">
+            <div class="main-question-container input-container">
+                <input type="text" readonly class="question-container input-same" >
+            </div>
+            <div class="answer-container input-container">
+                <input type="number" class="input-same input-number" >
+            </div>
+            <div class="submit-answer">
+                <button class="submit-answer">Submit Answer</button>
             </div>
         </div>
-     </section>
+    </section>
+    <section class="main-container final-result hidden">
+        <div class="container">
+            <h1 class="improve-instruction">keep going and improve your maths skills</h1>
+            <h2 class="final-score"></h2>
+            <button class="restart-game">Restart game</button>
+        </div>
+    </section>
 </body>
 
 </html>

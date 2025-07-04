@@ -122,7 +122,17 @@ button:hover {
 
 }
 
+i {
+    font-size: 2.5rem;
+}
 
+.count-timer {
+    font-size: 2rem;
+}
+
+.next-question-btn {
+    width: auto;
+}
 
 
 @media (max-width: 768px) {
@@ -135,9 +145,8 @@ button:hover {
     }
 
     button {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.8rem;
-        /* gap: 2rem; */
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
     }
 
     .container {
@@ -165,6 +174,14 @@ button:hover {
 
     .timer {
         justify-content: space-evenly;
+    }
+
+    i {
+        font-size: 2rem;
+    }
+
+    .count-timer {
+        font-size: 2rem;
     }
 }
 
@@ -220,5 +237,12 @@ button:hover {
         justify-content: space-between;
     }
 
+    i {
+        font-size: 1.5rem;
+    }
+
+    .count-timer {
+        font-size: 1.5rem;
+    }
 
 }
