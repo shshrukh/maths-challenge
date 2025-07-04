@@ -6,7 +6,9 @@ const state = {
     correctAswer: 0,
     totalQuestion: 10,
     genQuestions: 0,
-    timer: 15
+    timer: 15,
+    timerInterval: null,
+    timeExpired: false 
 
 };
 
@@ -30,6 +32,8 @@ function cacheDOM() {
         result : document.querySelector('.final-score'),
         scoreContainer : document.querySelector('.final-result'),
         restartBtn :document.querySelector('.restart-game'),
+        timerDisplay: document.querySelector('.count-timer'),
+
         
 
     })
@@ -60,24 +64,28 @@ function handleSelectGameLvl(e) {
 }
 
 function handleNextQuestion() {
-    if (!els.inputValue.value) {
-        alert('please enter the value')
-        return undefined
-
+    if (state.timeExpired) {
+        alert("Time's up!");
+        return;
     }
 
-    const inputNumber = els.inputValue.value;
+    if (!els.inputValue.value) {
+        alert('Please enter the value');
+        return;
+    }
+
+    const inputNumber = Number(els.inputValue.value);
     const correctAns = eval(state.question);
-    if (correctAns === Number(inputNumber)) {
+
+    if (correctAns === inputNumber) {
         state.correctAswer += 1;
     }
-    console.log(state.correctAswer);
 
     els.inputValue.value = '';
+    els.inputValue.focus();
     renderQuestion();
-
-
 }
+
 
 function randomNum(digit) {
     if (digit === 1) return Math.floor(Math.random() * 9) + 1;
@@ -99,17 +107,27 @@ function genQuestions(digit) {
 
 }
 function renderQuestion() {
+    if (state.timerInterval) clearInterval(state.timerInterval);
 
     state.genQuestions += 1;
     console.log("question number", state.genQuestions);
+
     if (state.genQuestions <= 10) {
         const question = genQuestions(state.questionDigits);
         state.question = question;
         els.inputQuestion.value = `${question} = ?`;
-    }else{
-        finalScore()
+
+        els.inputValue.focus();
+        timer(() => {
+            alert("⏱ Time's up!");
+            els.inputValue.value = '';
+            renderQuestion();
+        });
+    } else {
+        finalScore();
     }
 }
+
 function finalScore() {
     persentage = state.correctAswer/10 *100
     els.result.innerText = `your final score is ${persentage}%`
@@ -119,29 +137,36 @@ function finalScore() {
 }
 
 function handleRestart(){
+    clearInterval(state.timerInterval);
     state.questionDigits = 0;
     state.question = null;
     state.correctAswer = 0;
     state.genQuestions = 0;
-    els.scoreContainer.classList.add('hidden')
+    state.timeExpired = false;
+
+    els.scoreContainer.classList.add('hidden');
     handleNext();
 }
-function timer() {
-    const intervalId = setInterval(()=>{
+
+function timer(onTimeout) {
+    state.timer = 15;
+    state.timeExpired = false;
+
+    if (state.timerInterval) clearInterval(state.timerInterval);
+    state.timerInterval = setInterval(() => {
         state.timer -= 1;
-        console.log('interval tine', state.timer);
-        
-        if(state.timer === 0){
-            
-            console.log('inside timer', state.timer);
-            
-            clearInterval(intervalId);
-            state.timer = 15;
+        console.log('Time left:', state.timer);
+        if (els.timerDisplay) {
+            els.timerDisplay.innerText = state.timer;
         }
-    }
-    ,1500)
+        if (state.timer <= 0) {
+            clearInterval(state.timerInterval);
+            state.timeExpired = true;
+            onTimeout();
+        }
+    }, 1000); 
 }
-timer()
+
 
 
 document.addEventListener('DOMContentLoaded', init)
